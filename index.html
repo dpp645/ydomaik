@@ -140,6 +140,7 @@ nav{
   display:flex;align-items:center;justify-content:center;gap:4rem;
   border-bottom:1px solid var(--borde2);
   flex-wrap:wrap;
+  text-align:center;
 }
 .banda-item{
   display:flex;align-items:center;gap:.6rem;
@@ -213,6 +214,7 @@ nav{
 .propiedades-grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
   gap:1.5rem;
+  justify-items:center;
 }
 .propiedad-card{
   background:var(--blanco);
@@ -220,6 +222,8 @@ nav{
   overflow:hidden;
   transition:all .3s;
   cursor:pointer;
+  width:100%;
+  max-width:520px;
 }
 .propiedad-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.12);}
 .propiedad-img{
@@ -475,39 +479,94 @@ footer{
 
 /* RESPONSIVE */
 @media(max-width:900px){
+  nav{padding:0 1.5rem;}
   .nosotros-grid{grid-template-columns:1fr;gap:3rem;}
   .nosotros-badge{right:0;}
+  .nosotros-visual{max-height:320px;}
   .servicios-grid{grid-template-columns:1fr;}
   .zonas-grid{grid-template-columns:1fr;}
   .guia-grid{grid-template-columns:1fr;}
   .contacto-grid{grid-template-columns:1fr;gap:3rem;}
-  footer{grid-template-columns:1fr;text-align:center;}
+  footer{grid-template-columns:1fr;text-align:center;gap:1.5rem;}
   .footer-copy{text-align:center;}
+  .footer-links{justify-content:center;}
+  .buscador-form{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:768px){
   nav{padding:0 1.2rem;}
-  .nav-links,.nav-cta-wrap{display:none;}
+  .nav-links,.nav-cta{display:none;}
   .nav-mobile{display:block;}
   .nav-links.open{
     display:flex;flex-direction:column;
     position:fixed;top:72px;left:0;right:0;
     background:rgba(14,14,14,.97);
-    padding:2rem;gap:1.5rem;border-bottom:1px solid var(--borde2);
+    padding:2rem;gap:1.5rem;
+    border-bottom:1px solid var(--borde2);
     z-index:199;
   }
-  .hero-content{padding:0 1.5rem 5rem;}
-  .hero h1{letter-spacing:-.5px;}
+  /* Hero */
+  .hero{min-height:100svh;}
+  .hero-content{padding:0 1.4rem;}
+  .hero h1{
+    font-size:clamp(2.8rem,12vw,4rem);
+    letter-spacing:-.5px;
+    word-break:break-word;
+    hyphens:auto;
+  }
+  .hero-sub{font-size:.85rem;max-width:100%;}
+  .hero-actions{flex-direction:column;gap:.8rem;width:100%;max-width:320px;}
+  .btn-dorado,.btn-ghost-light{width:100%;text-align:center;}
+  .hero-divider{display:none;}
   .hero-scroll{display:none;}
-  .banda{padding:1rem 1.5rem;gap:2rem;}
-  .buscador-sec{padding:2rem 1.5rem;}
+  /* Banda */
+  .banda{padding:1rem 1.2rem;gap:1.2rem;}
+  .banda-item{font-size:.62rem;}
+  /* Buscador */
+  .buscador-sec{padding:2rem 1.2rem;}
   .buscador-form{grid-template-columns:1fr;}
-  .sec{padding:4rem 1.5rem;}
+  .buscador-titulo{font-size:.95rem;}
+  /* Secciones */
+  .sec{padding:4rem 1.4rem;}
+  .h2{
+    font-size:clamp(1.8rem,8vw,2.5rem);
+    letter-spacing:-.3px;
+    word-break:break-word;
+    hyphens:auto;
+  }
+  /* Propiedades */
   .propiedades-grid{grid-template-columns:1fr;}
+  .propiedad-img{height:200px;}
+  /* Servicios */
+  .servicio{padding:2rem 1.5rem;}
+  /* Nosotros */
+  .nosotros-visual{max-height:260px;}
+  .nosotros-logo-grande{font-size:4rem;}
+  .nosotros-badge{bottom:1rem;right:0;padding:1rem;}
+  .nosotros-badge .num{font-size:1.8rem;}
+  /* Zonas */
+  .zona-num{font-size:3rem;}
+  /* Guía */
+  .guia-item{padding:1.5rem;}
+  /* CTA */
+  .cta-sec{padding:5rem 1.4rem;}
+  .cta-sec::before{font-size:5rem;letter-spacing:2px;}
+  .cta-inner .h2{
+    font-size:clamp(2rem,9vw,3rem);
+    word-break:break-word;
+  }
+  .cta-inner p{font-size:.83rem;}
+  .cta-inner .btn-dorado,
+  .cta-inner .btn-ghost-light{width:100%;text-align:center;}
+  /* Contacto */
   .form-row{grid-template-columns:1fr;}
-  .cta-sec{padding:5rem 1.5rem;}
-  .cta-sec::before{font-size:8rem;}
-  footer{padding:2rem 1.5rem;}
-  .footer-links{gap:1.2rem;}
+  .info-item a,.info-item span{font-size:.82rem;}
+  .wa-btn{width:100%;justify-content:center;}
+  /* Footer */
+  footer{padding:2rem 1.4rem;gap:1.2rem;}
+  .footer-links{gap:.8rem;}
+  .footer-link{font-size:.62rem;}
+  /* WhatsApp flotante */
+  .wa-float{bottom:1.2rem;right:1.2rem;width:46px;height:46px;font-size:1.2rem;}
 }
 </style>
 </head>
@@ -542,6 +601,7 @@ footer{
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
       <span>Inmobiliaria en Alicante</span>
+      <div class="hero-eyebrow-line"></div>
     </div>
     <h1 class="serif">
       Tu próxima<br>
@@ -553,6 +613,7 @@ footer{
       <a href="#propiedades" class="btn-dorado">Ver propiedades</a>
       <a href="#contacto" class="btn-ghost-light">Hablar con un asesor</a>
     </div>
+    <div class="hero-divider"></div>
   </div>
   <div class="hero-scroll">
     <div class="hero-scroll-line"></div>
@@ -792,7 +853,7 @@ footer{
     <div class="eyebrow" style="justify-content:center;margin-bottom:1.5rem;"><span class="eyebrow-line"></span>¿Hablamos?<span class="eyebrow-line"></span></div>
     <h2 class="h2 serif h2-light">Tu propiedad ideal<br>está a una <em>llamada</em></h2>
     <p>Cuéntanos qué buscas y te ayudamos a encontrarlo. Sin compromiso, con toda la información que necesitas para tomar la mejor decisión.</p>
-    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem;">
       <a href="tel:+34691959570" class="btn-dorado">📞 Llamar ahora</a>
       <a href="https://api.whatsapp.com/send?phone=+34691959570&text=Hola,%20me%20gustaría%20información%20sobre%20propiedades" target="_blank" class="btn-ghost-light">💬 WhatsApp</a>
     </div>
